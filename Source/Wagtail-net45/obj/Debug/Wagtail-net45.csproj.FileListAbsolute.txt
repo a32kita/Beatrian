@@ -1,0 +1,6 @@
+S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Wagtail-net45\bin\Debug\Wagtail-net45.dll
+S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Wagtail-net45\bin\Debug\Wagtail-net45.pdb
+S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Wagtail-net45\obj\Debug\Wagtail-net45.csprojAssemblyReference.cache
+S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Wagtail-net45\obj\Debug\Wagtail-net45.csproj.CoreCompileInputs.cache
+S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Wagtail-net45\obj\Debug\Wagtail-net45.dll
+S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Wagtail-net45\obj\Debug\Wagtail-net45.pdb
