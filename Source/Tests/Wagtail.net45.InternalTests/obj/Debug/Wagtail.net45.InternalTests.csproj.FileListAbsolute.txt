@@ -1,7 +1,0 @@
-S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Tests\Wagtail.net45.InternalTests\bin\Debug\Wagtail.net45.InternalTests.exe.config
-S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Tests\Wagtail.net45.InternalTests\bin\Debug\Wagtail.net45.InternalTests.exe
-S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Tests\Wagtail.net45.InternalTests\bin\Debug\Wagtail.net45.InternalTests.pdb
-S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Tests\Wagtail.net45.InternalTests\obj\Debug\Wagtail.net45.InternalTests.csprojAssemblyReference.cache
-S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Tests\Wagtail.net45.InternalTests\obj\Debug\Wagtail.net45.InternalTests.csproj.CoreCompileInputs.cache
-S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Tests\Wagtail.net45.InternalTests\obj\Debug\Wagtail.net45.InternalTests.exe
-S:\Public Development\ProjectGroup\WebpageUpdateChecker\Wagtail\Source\Tests\Wagtail.net45.InternalTests\obj\Debug\Wagtail.net45.InternalTests.pdb
