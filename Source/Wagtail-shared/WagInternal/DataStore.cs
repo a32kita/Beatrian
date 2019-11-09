@@ -13,6 +13,8 @@ namespace Wagtail.WagInternal
         private BinaryWriter _binaryWriter;
         private bool _streamLeaveOpen;
 
+        private static readonly uint _VERSION;
+
 
         // コンストラクタ
 
@@ -34,6 +36,14 @@ namespace Wagtail.WagInternal
             {
                 throw new ArgumentException("ストリームへのアクセスの初期化に失敗しました。" + ex.Message, ex);
             }
+        }
+
+        /// <summary>
+        /// <see cref="DataStore"/> クラスを初期化します。
+        /// </summary>
+        static DataStore()
+        {
+            _VERSION = 1;
         }
 
 
@@ -113,6 +123,7 @@ namespace Wagtail.WagInternal
             this._dataStream.SetLength(0);
             this._dataStream.Seek(0, SeekOrigin.Begin);
 
+            this._writeUInt32(_VERSION);
             this._writeDateTime(storeValue.UpdatedTime);
             this._writeUInt32(storeValue.ContentLength);
             this._writeBuffer(storeValue.Content);
@@ -121,6 +132,9 @@ namespace Wagtail.WagInternal
         public DataStoreValue GetValue()
         {
             this._dataStream.Seek(0, SeekOrigin.Begin);
+
+            if (this._readUInt32() != _VERSION)
+                throw new NotSupportedException("互換性の確認に失敗しました。");
 
             return new DataStoreValue()
             {
@@ -133,6 +147,9 @@ namespace Wagtail.WagInternal
         public DataStoreValue GetValueWithoutContent()
         {
             this._dataStream.Seek(0, SeekOrigin.Begin);
+
+            if (this._readUInt32() != _VERSION)
+                throw new NotSupportedException("互換性の確認に失敗しました。");
 
             return new DataStoreValue()
             {

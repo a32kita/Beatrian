@@ -12,7 +12,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)WagInternal\DataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WagInternal\DataStoreValue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WagInternal\DataStoreValueExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WagtailCacheMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WagtailClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)WagtailConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WagtailInitializeConfig.cs" />
   </ItemGroup>
 </Project>

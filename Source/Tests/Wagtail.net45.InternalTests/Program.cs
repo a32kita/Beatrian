@@ -27,13 +27,22 @@ namespace Wagtail.net45.InternalTests
             var ms = new MemoryStream();
             var dataStore = new DataStore(ms, true);
 
+            var updateTime = new DateTime(9999, 12, 30, 23, 58, 59, 999);
             var content = Encoding.GetEncoding("utf-16").GetBytes("こんにちは！世界");
             dataStore.SetValue(new DataStoreValue()
             {
-                UpdatedTime = new DateTime(9999, 12, 30, 23, 59, 59, 999),
+                UpdatedTime = updateTime,
                 ContentLength = (uint)content.Length,
                 Content = content
             });
+
+
+            // 読み取り
+            var value = dataStore.GetValue();
+
+            // 日付の確認
+            if (value.UpdatedTime != updateTime)
+                throw new Exception("UpdateTime が書き込み時と異なる値で展開されました。");
         }
 
         /// <summary>
