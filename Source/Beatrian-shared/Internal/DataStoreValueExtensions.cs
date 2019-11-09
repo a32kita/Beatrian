@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Wagtail.WagInternal
+namespace Beatrian.Internal
 {
     internal static class DataStoreValueExtensions
     {

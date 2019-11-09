@@ -1,25 +1,25 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29025.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Wagtail-shared", "Wagtail-shared\Wagtail-shared.shproj", "{B1D96924-5675-405C-9E1C-9B027E1402A4}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Beatrian-shared", "Beatrian-shared\Beatrian-shared.shproj", "{B1D96924-5675-405C-9E1C-9B027E1402A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wagtail-net45", "Wagtail-net45\Wagtail-net45.csproj", "{C3FB1522-A4B5-4793-AC34-DFCA2F782CCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatrian-net45", "Beatrian-net45\Beatrian-net45.csproj", "{C3FB1522-A4B5-4793-AC34-DFCA2F782CCD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{47B65246-F99F-4909-A799-EC83E0378F0A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net45", "net45", "{444E03E3-1A83-40BF-AAD4-A149BDBBE583}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wagtail.net45.Tests", "Tests\Wagtail.net45.Tests\Wagtail.net45.Tests.csproj", "{5A4F4EF1-3F02-43CA-83B2-A561BA1975A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatrian.net45.Tests", "Tests\Beatrian.net45.Tests\Beatrian.net45.Tests.csproj", "{5A4F4EF1-3F02-43CA-83B2-A561BA1975A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wagtail.net45.InternalTests", "Tests\Wagtail.net45.InternalTests\Wagtail.net45.InternalTests.csproj", "{7A13AE0C-1A8A-478E-9262-F5F12CE96DE2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatrian.net45.InternalTests", "Tests\Beatrian.net45.InternalTests\Beatrian.net45.InternalTests.csproj", "{7A13AE0C-1A8A-478E-9262-F5F12CE96DE2}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Wagtail-shared\Wagtail-shared.projitems*{7a13ae0c-1a8a-478e-9262-f5f12ce96de2}*SharedItemsImports = 4
-		Wagtail-shared\Wagtail-shared.projitems*{b1d96924-5675-405c-9e1c-9b027e1402a4}*SharedItemsImports = 13
-		Wagtail-shared\Wagtail-shared.projitems*{c3fb1522-a4b5-4793-ac34-dfca2f782ccd}*SharedItemsImports = 4
+		Beatrian-shared\Beatrian-shared.projitems*{7a13ae0c-1a8a-478e-9262-f5f12ce96de2}*SharedItemsImports = 4
+		Beatrian-shared\Beatrian-shared.projitems*{b1d96924-5675-405c-9e1c-9b027e1402a4}*SharedItemsImports = 13
+		Beatrian-shared\Beatrian-shared.projitems*{c3fb1522-a4b5-4793-ac34-dfca2f782ccd}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

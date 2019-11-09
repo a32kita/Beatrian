@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Wagtail
+namespace Beatrian
 {
-    public enum WagtailCacheMode
+    public enum BeatrianCacheMode
     {
         /// <summary>
         /// 有効なデータが格納されたストリームの場合、自動的に利用します。

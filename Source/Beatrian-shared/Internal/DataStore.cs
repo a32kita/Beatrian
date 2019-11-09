@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Wagtail.WagInternal
+namespace Beatrian.Internal
 {
     internal class DataStore : IDisposable
     {

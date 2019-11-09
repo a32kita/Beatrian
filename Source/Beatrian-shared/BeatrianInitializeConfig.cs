@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Wagtail
+namespace Beatrian
 {
-    public class WagtailInitializeConfig
+    public class BeatrianInitializeConfig
     {
         // 公開プロパティ
         
@@ -20,9 +20,9 @@ namespace Wagtail
         }
 
         /// <summary>
-        /// <see cref="WagtailInitializeConfig.CacheDataStream"/> で指定された <see cref="Stream"/> の扱いについて、取得または設定します。
+        /// <see cref="BeatrianInitializeConfig.CacheDataStream"/> で指定された <see cref="Stream"/> の扱いについて、取得または設定します。
         /// </summary>
-        public WagtailCacheMode CacheMode
+        public BeatrianCacheMode CacheMode
         {
             get;
             set;
@@ -58,7 +58,7 @@ namespace Wagtail
         }
 
         /// <summary>
-        /// <see cref="WagtailInitializeConfig.EnableHeadRequestToCheckSize"/> が true のときにキャッシュを有効とみなす最大期間を取得または設定します。
+        /// <see cref="BeatrianInitializeConfig.EnableHeadRequestToCheckSize"/> が true のときにキャッシュを有効とみなす最大期間を取得または設定します。
         /// このパラメータは、コンテンツのサイズが変化しない更新があった場合の検出漏れを防ぎます。
         /// </summary>
         public TimeSpan HeadRequestToCheckSizeMaxHoldTime
@@ -71,12 +71,12 @@ namespace Wagtail
         // コンストラクタ
 
         /// <summary>
-        /// デフォルトのパラメータを格納した <see cref="WagtailInitializeConfig"/> クラスの新しいインスタンスを初期化します。
+        /// デフォルトのパラメータを格納した <see cref="BeatrianInitializeConfig"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public WagtailInitializeConfig()
+        public BeatrianInitializeConfig()
         {
             this.CacheDataStream = null;
-            this.CacheMode = WagtailCacheMode.Auto;
+            this.CacheMode = BeatrianCacheMode.Auto;
             this.MaxContentSize = 0u;
             this.SendIfModifiedSince = true;
             this.EnableHeadRequestToCheckSize = true;

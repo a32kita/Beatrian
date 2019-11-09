@@ -1,15 +1,15 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
-[assembly: AssemblyTitle("Wagtail.net45.InternalTests")]
+[assembly: AssemblyTitle("Beatrian.net45.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Wagtail.net45.InternalTests")]
+[assembly: AssemblyProduct("Beatrian.net45.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // このプロジェクトが COM に公開される場合、次の GUID が typelib の ID になります
-[assembly: Guid("7a13ae0c-1a8a-478e-9262-f5f12ce96de2")]
+[assembly: Guid("5a4f4ef1-3f02-43ca-83b2-a561ba1975a3")]
 
 // アセンブリのバージョン情報は次の 4 つの値で構成されています:
 //

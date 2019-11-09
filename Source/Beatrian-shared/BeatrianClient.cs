@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Wagtail
+namespace Beatrian
 {
-    class WagtailClient
+    class BeatrianClient
     {
     }
 }
