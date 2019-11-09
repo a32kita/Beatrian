@@ -91,7 +91,11 @@ namespace Beatrian
         /// </summary>
         public void VerifyConfigurations()
         {
+            if (this.CacheDataStream == null)
+                throw new BeatrianConfigException("任意のストリームを指定する必要があります。", nameof(this.CacheDataStream));
 
+            if (this.HeadRequestToCheckSizeMaxHoldTime < new TimeSpan(0, 0, 1))
+                throw new BeatrianConfigException("1 秒よりも長い期間を指定する必要があります。", nameof(this.HeadRequestToCheckSizeMaxHoldTime));
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 namespace Beatrian
 {
     /// <summary>
-    /// Beatrian Library 
+    /// Beatrian 関連の例外であることを表します。
     /// </summary>
-    interface IBeatrianException
+    public interface IBeatrianException
     {
     }
 }

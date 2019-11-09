@@ -9,6 +9,7 @@
     <Import_RootNamespace>Beatrian</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BeatrianConfigException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IBeatrianException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStoreValue.cs" />
