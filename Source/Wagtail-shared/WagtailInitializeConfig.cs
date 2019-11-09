@@ -82,5 +82,16 @@ namespace Wagtail
             this.EnableHeadRequestToCheckSize = true;
             this.HeadRequestToCheckSizeMaxHoldTime = new TimeSpan(1, 0, 0);
         }
+
+
+        // 公開メソッド
+
+        /// <summary>
+        /// 設定値が問題ないか検証します。
+        /// </summary>
+        public void VerifyConfigurations()
+        {
+
+        }
     }
 }

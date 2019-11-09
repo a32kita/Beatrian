@@ -9,6 +9,7 @@
     <Import_RootNamespace>Wagtail</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IWagtailException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WagInternal\DataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WagInternal\DataStoreValue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WagInternal\DataStoreValueExtensions.cs" />
