@@ -29,6 +29,16 @@ namespace Beatrian
         }
 
         /// <summary>
+        /// ターゲットとなる URL を取得または設定します。
+        /// 有効な <see cref="Uri"/> を必ず指定する必要があります。
+        /// </summary>
+        public Uri TargetUri
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Web ページの内容をロードするときの最大サイズを取得または設定します。
         /// 0 を指定すると最大サイズの制限は無効になります。
         /// </summary>
@@ -77,6 +87,7 @@ namespace Beatrian
         {
             this.CacheDataStream = null;
             this.CacheMode = BeatrianCacheMode.Auto;
+            this.TargetUri = null;
             this.MaxContentSize = 0u;
             this.SendIfModifiedSince = true;
             this.EnableHeadRequestToCheckSize = true;
@@ -93,6 +104,9 @@ namespace Beatrian
         {
             if (this.CacheDataStream == null)
                 throw new BeatrianConfigException("任意のストリームを指定する必要があります。", nameof(this.CacheDataStream));
+
+            if (this.TargetUri == null)
+                throw new BeatrianConfigException("対象の URL を指定する必要があります。", nameof(this.TargetUri));
 
             if (this.HeadRequestToCheckSizeMaxHoldTime < new TimeSpan(0, 0, 1))
                 throw new BeatrianConfigException("1 秒よりも長い期間を指定する必要があります。", nameof(this.HeadRequestToCheckSizeMaxHoldTime));

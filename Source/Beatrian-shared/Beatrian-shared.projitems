@@ -10,6 +10,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BeatrianConfigException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiffDetection\DiffDetectionCapture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiffDetection\DiffDetectionResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DiffDetection\DiffDetector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Handling\BeatrianUpdatedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Handling\BeatrianUpdatedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IBeatrianException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStoreValue.cs" />
@@ -17,5 +22,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)BeatrianCacheMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BeatrianClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BeatrianInitializeConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestorElements\HttpClientPool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestorElements\HttpClientPoolElement.cs" />
   </ItemGroup>
 </Project>
