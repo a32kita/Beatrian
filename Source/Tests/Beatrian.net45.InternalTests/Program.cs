@@ -16,7 +16,14 @@ namespace Beatrian.net45.InternalTests
             Test001();
             Test002();
             Test003();
+
+            Test011();
+            Test012();
+
             Test901();
+
+            Console.WriteLine("Completed!!");
+            Console.ReadKey();
         }
 
         /// <summary>
@@ -84,6 +91,99 @@ namespace Beatrian.net45.InternalTests
             // ContentLength の確認 (utf-16 のため、半角文字列の場合、文字数の 2 倍のサイズとなる)
             if (dataStoreValue.ContentLength != (uint)(source.Length * 2))
                 throw new Exception("ContentLength の値が誤りです。");
+        }
+
+        /// <summary>
+        /// Test011: WebRequestor によるページ データの取得
+        /// </summary>
+        static void Test011()
+        {
+            var ms = new MemoryStream();
+            WebRequestor.ExecuteRequest(new BeatrianInitializeConfig()
+            {
+                CacheDataStream = new MemoryStream(),
+                TargetUri = new Uri("http://www.a32kita.net/")
+            }, ms);
+
+            ms.Seek(0, SeekOrigin.Begin);
+            using (var sr = new StreamReader(ms))
+            {
+                //Console.WriteLine(sr.ReadLine());
+                //Console.WriteLine(sr.ReadLine());
+
+                Console.WriteLine("Test011 | --");
+                for (var i = 0; i < 10 && !sr.EndOfStream; i++)
+                    Console.WriteLine("Test011 | {0:00}: {1}", i + 1, sr.ReadLine());
+                Console.WriteLine("Test011 | --");
+            }
+        }
+
+        /// <summary>
+        /// Test012: WebRequestor のコネクションの枯渇 (異常系)
+        /// </summary>
+        static void Test012()
+        {
+            Action executeRequest = new Action(() =>
+            {
+                try
+                {
+                    var ms = new MemoryStream();
+                    WebRequestor.ExecuteRequest(new BeatrianInitializeConfig()
+                    {
+                        CacheDataStream = new MemoryStream(),
+                        TargetUri = new Uri("http://www.a32kita.net/")
+                    }, ms);
+                }
+                catch (AggregateException ex)
+                {
+                    foreach (var internalEx in ex.InnerExceptions)
+                    {
+                        if (internalEx is AggregateException)
+                        {
+                            // 更に入れ子
+                            foreach (var internalEx2 in ((AggregateException)internalEx).InnerExceptions)
+                            {
+                                if (internalEx is Beatrian.Internal.WebRequestorElements.HttpClientPoolOutOfStockException == false)
+                                {
+                                    Console.WriteLine("Test012 | 入れ子第 2 階層で想定外の例外");
+                                    throw internalEx;
+                                }
+                            }
+                        }
+                        else if (internalEx is Beatrian.Internal.WebRequestorElements.HttpClientPoolOutOfStockException == false)
+                        {
+                            Console.WriteLine("Test012 | 入れ子第 1 階層で想定外の例外");
+                            throw internalEx;
+                        }
+                    }
+
+                    // 正常
+                }
+                catch (Beatrian.Internal.WebRequestorElements.HttpClientPoolOutOfStockException)
+                {
+                    // 正常
+                }
+                
+            });
+
+            Parallel.Invoke(new Action[]
+            {
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+                    executeRequest,
+            });
         }
 
         /// <summary>

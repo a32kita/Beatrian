@@ -25,5 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestorElements\HttpClientPool.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestorElements\HttpClientPoolElement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestorElements\HttpClientPoolInitializeParameter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\WebRequestorElements\HttpClientPoolOutOfStockException.cs" />
   </ItemGroup>
 </Project>
