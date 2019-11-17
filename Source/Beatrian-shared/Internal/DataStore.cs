@@ -13,6 +13,7 @@ namespace Beatrian.Internal
         private BinaryWriter _binaryWriter;
         private bool _streamLeaveOpen;
 
+        private static readonly string _MAGICNUMBER;
         private static readonly uint _VERSION;
 
 
@@ -43,6 +44,7 @@ namespace Beatrian.Internal
         /// </summary>
         static DataStore()
         {
+            _MAGICNUMBER = "BEATRIAN DATASTORE ";
             _VERSION = 1;
         }
 
@@ -65,6 +67,18 @@ namespace Beatrian.Internal
 
             this._binaryReader = new BinaryReader(this._dataStream, Encoding.UTF8, true);
             this._binaryWriter = new BinaryWriter(this._dataStream, Encoding.UTF8, true);
+        }
+
+        private string _readASCIIString(int len)
+        {
+            var buf = this._binaryReader.ReadBytes(len);
+            return Encoding.ASCII.GetString(buf);
+        }
+
+        private void _writeASCIIString(string value)
+        {
+            var buf = Encoding.ASCII.GetBytes(value);
+            this._binaryWriter.Write(buf);
         }
 
         private DateTime _readDateTime()
@@ -102,6 +116,16 @@ namespace Beatrian.Internal
             this._binaryWriter.Flush();
         }
 
+        private DataStoreState _readDataStoreState()
+        {
+            return (DataStoreState)_readUInt32();
+        }
+
+        private void _writeDataStoreState(DataStoreState value)
+        {
+            this._writeUInt32((uint)value);
+        }
+
         private byte[] _readBuffer()
         {
             var len = (long)this._binaryReader.ReadUInt32();
@@ -115,26 +139,55 @@ namespace Beatrian.Internal
             this._binaryWriter.Flush();
         }
 
+        private void _verifyMagicNumber()
+        {
+            if (this._readASCIIString(_MAGICNUMBER.Length) != _MAGICNUMBER)
+                throw new NotSupportedException("データ形式の検証に失敗しました。");
+
+            if (this._readUInt32() != _VERSION)
+                throw new NotSupportedException("バージョン互換性の確認に失敗しました。");
+        }
+
 
         // 公開メソッド
 
+        /// <summary>
+        /// <see cref="DataStoreValue"/> を格納します。
+        /// </summary>
+        /// <param name="storeValue">格納する <see cref="DataStoreValue"/> を指定します。 null を指定すると、格納状態でないことが書き込まれます。</param>
         public void SetValue(DataStoreValue storeValue)
         {
             this._dataStream.SetLength(0);
             this._dataStream.Seek(0, SeekOrigin.Begin);
 
+            this._writeASCIIString(_MAGICNUMBER);
             this._writeUInt32(_VERSION);
+            
+            if (storeValue == null)
+            {
+                // 空の DataStore
+                this._writeDataStoreState(DataStoreState.Empty);
+                return;
+            }
+
+            this._writeDataStoreState(DataStoreState.Stored);
             this._writeDateTime(storeValue.UpdatedTime);
             this._writeUInt32(storeValue.ContentLength);
             this._writeBuffer(storeValue.Content);
         }
 
+        /// <summary>
+        /// <see cref="DataStoreValue"/> を読み取ります。格納状態でない場合、 null が返ります。
+        /// </summary>
+        /// <returns></returns>
         public DataStoreValue GetValue()
         {
             this._dataStream.Seek(0, SeekOrigin.Begin);
+            this._verifyMagicNumber();
 
-            if (this._readUInt32() != _VERSION)
-                throw new NotSupportedException("互換性の確認に失敗しました。");
+            if (this._readDataStoreState() == DataStoreState.Empty)
+                // 空の DataStore
+                return null;
 
             return new DataStoreValue()
             {
@@ -147,9 +200,11 @@ namespace Beatrian.Internal
         public DataStoreValue GetValueWithoutContent()
         {
             this._dataStream.Seek(0, SeekOrigin.Begin);
+            this._verifyMagicNumber();
 
-            if (this._readUInt32() != _VERSION)
-                throw new NotSupportedException("互換性の確認に失敗しました。");
+            if (this._readDataStoreState() == DataStoreState.Empty)
+                // 空の DataStore
+                return null;
 
             return new DataStoreValue()
             {

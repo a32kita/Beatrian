@@ -77,6 +77,15 @@ namespace Beatrian
             set;
         }
 
+        /// <summary>
+        /// HTTP リクエストで使用するクライアントのプール サイズを取得または設定します。
+        /// </summary>
+        public int HttpClientPoolSize
+        {
+            get;
+            set;
+        }
+
 
         // コンストラクタ
 
@@ -92,6 +101,7 @@ namespace Beatrian
             this.SendIfModifiedSince = true;
             this.EnableHeadRequestToCheckSize = true;
             this.HeadRequestToCheckSizeMaxHoldTime = new TimeSpan(1, 0, 0);
+            this.HttpClientPoolSize = 10;
         }
 
 
@@ -110,6 +120,9 @@ namespace Beatrian
 
             if (this.HeadRequestToCheckSizeMaxHoldTime < new TimeSpan(0, 0, 1))
                 throw new BeatrianConfigException("1 秒よりも長い期間を指定する必要があります。", nameof(this.HeadRequestToCheckSizeMaxHoldTime));
+
+            if (this.HttpClientPoolSize < 1)
+                throw new BeatrianConfigException("コネクション プールのサイズは 1 以上を指定する必要があります。", nameof(this.HttpClientPoolSize));
         }
     }
 }

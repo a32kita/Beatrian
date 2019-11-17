@@ -25,7 +25,7 @@ namespace Beatrian.Internal
             // HttpClient のプールを作成
             _httpClientPool = new HttpClientPool(new HttpClientPoolInitializeParameter()
             {
-                MaxClients = 5,
+                MaxClients = 3,
             });
         }
 
@@ -53,11 +53,12 @@ namespace Beatrian.Internal
         /// </summary>
         /// <param name="config"></param>
         /// <param name="outputStream">レスポンス内容の出力先を指定します。出力によりカーソルが移動しますが、クローズは行われません。</param>
-        public static async Task ExecuteRequestAsync(BeatrianInitializeConfig config, Stream outputStream)
+        /// <param name="httpClientPool"></param>
+        public static async Task ExecuteRequestAsync(BeatrianInitializeConfig config, Stream outputStream, HttpClientPool httpClientPool)
         {
             var targetUri = config.TargetUri;
             var httpMethod = HttpMethod.Get;
-            var httpClient = _httpClientPool.GetClient();
+            var httpClient = httpClientPool.GetClient();
 
             using (var httpRequest = new HttpRequestMessage(httpMethod, targetUri))
             using (var httpResponse = await httpClient.SendAsync(httpRequest))
@@ -68,11 +69,32 @@ namespace Beatrian.Internal
                     httpResponseStream, outputStream, 1024);
             }
 
-            _httpClientPool.PutAwayClient(httpClient);
+            httpClientPool.PutAwayClient(httpClient);
         }
 
         /// <summary>
         /// <see cref="BeatrianInitializeConfig"/> に基づいてコンテンツの取得を実施します。
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="outputStream">レスポンス内容の出力先を指定します。出力によりカーソルが移動しますが、クローズは行われません。</param>
+        /// <param name="httpClientPool"></param>
+        public static void ExecuteRequest(BeatrianInitializeConfig config, Stream outputStream, HttpClientPool httpClientPool)
+        {
+
+        }
+
+        /// <summary>
+        /// <see cref="WebRequestor"/> 内部の <see cref="HttpClientPool"/> を使用して、 <see cref="BeatrianInitializeConfig"/> に基づいてコンテンツの取得を実施します。
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="outputStream">レスポンス内容の出力先を指定します。出力によりカーソルが移動しますが、クローズは行われません。</param>
+        public static async Task ExecuteRequestAsync(BeatrianInitializeConfig config, Stream outputStream)
+        {
+            await ExecuteRequestAsync(config, outputStream, _httpClientPool);
+        }
+
+        /// <summary>
+        /// <see cref="WebRequestor"/> 内部の <see cref="HttpClientPool"/> を使用して、 <see cref="BeatrianInitializeConfig"/> に基づいてコンテンツの取得を実施します。
         /// </summary>
         /// <param name="config"></param>
         /// <param name="outputStream"></param>

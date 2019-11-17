@@ -6,6 +6,11 @@ namespace Beatrian.Internal
 {
     internal class DataStoreValue
     {
+        // 公開静的フィールド
+
+        public static readonly DataStoreValue Empty;
+
+            
         // 公開プロパティ
 
         public DateTime UpdatedTime
@@ -24,6 +29,14 @@ namespace Beatrian.Internal
         {
             get;
             set;
+        }
+
+
+        // コンストラクタ
+
+        static DataStoreValue()
+        {
+            Empty = null;
         }
     }
 }

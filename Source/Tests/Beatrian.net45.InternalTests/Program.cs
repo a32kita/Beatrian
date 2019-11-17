@@ -193,7 +193,7 @@ namespace Beatrian.net45.InternalTests
         {
             var dataStoreValue = new DataStoreValue();
 
-            var source = "hello, world!!";
+            var source = "hello, world!! // こんにちは、世界！！";
             dataStoreValue.SetHtmlSource(source);
 
             using (var fs = File.Open("Test901.txt", FileMode.Create, FileAccess.ReadWrite))

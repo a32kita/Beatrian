@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Handling\BeatrianUpdatedEventHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IBeatrianException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStoreState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStoreValue.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\DataStoreValueExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BeatrianCacheMode.cs" />
